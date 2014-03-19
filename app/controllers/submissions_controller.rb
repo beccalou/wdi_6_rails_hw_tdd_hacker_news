@@ -8,8 +8,9 @@ class SubmissionsController < ApplicationController
 			@user = current_user
 	end
 
+#duplicated code, not DRY-- change Submission.create to Submission.new
 	def create
-		@submission = Submission.create(submission_params)
+		@submission = Submission.new(submission_params)
 		@submission.user_id = current_user.id
 			if @submission.save!
 				flash[:notice] = 'Created a new submission!'
