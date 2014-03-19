@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = Comment.new(comment_params) #duplicated code, not DRY-- change Comment.create to Comment.new
+		#duplicated code, not DRY-- change Comment.create to Comment.new
+		@comment = Comment.new(comment_params)
 		@comment.submission_id = params[:submission_id]
 		@comment.user_id = current_user.id
 		if @comment.save!
